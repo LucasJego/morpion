@@ -1,10 +1,13 @@
+$:.unshift File.expand_path("./../lib", __FILE__)
 require_relative 'board_case.rb'
+require_relative 'game.rb'
+#require 'app/board_case'
+#require 'app/game'
 
 
 class Board
 	attr_accessor :board_cases_array, :number_of_rounds
-  # Affiche le plateau en une seule fois
-  # l'état de chaque case correspond à l'état donné dans la classe Board_Case
+
   def initialize
   	@board_cases_array = []
   	@number_of_rounds = 0
@@ -24,12 +27,77 @@ class Board
     @board_cases_array << caseC2 = BoardCase.new("C2", " ")
     @board_cases_array << caseC3 = BoardCase.new("C3", " ")
     
-    puts @board_cases_array
   end
 
 
-  def play_turn
+  def play_turn(players_array)
+   # puts "\nVoulez-vous faire une partie?"
+    #answer = gets.chomp
+    
+    answer = "oui"
+    # La variable d'instance @number_of_round va à la fois compter le nombre de tours joués et permettre de savoir quel joueur doit jouer. Si n est impair, c'est au joueur 1, sinon c'est au joueur 2
+    @number_of_rounds = 1
 
+    while answer != "non" || answer != "Non" do
+      while number_of_rounds <= 9
+	      # On définit un tableau des cases disponibles
+	      # Au départ, ce tableau est identique au tableau des cases
+	      available_board_cases_array = @board_cases_array
+	      
+	      # reste va valoir 1 ou 0
+	      rest = number_of_rounds % 2
+
+        puts "\n\n\t\tTour n°#{number_of_rounds}".light_red
+
+	      if rest == 1
+	      	print "\nAu tour de "
+	      	print "#{players_array[0].name}.".light_blue
+	      else
+	      	print "\nAu tour de "
+	      	print "#{players_array[1].name}.".light_blue
+	      end
+
+	      puts "\nSur quelle case voulez-vous jouer?".green
+	      print "> "
+	      answer_case_position = gets.chomp
+
+	      if answer_case_position == 'A1'
+	        # Le programme remplace la valeur par défaut de la case par 'X'
+	        @board_cases_array[0].content = players_array[rest].symbol
+	         # plus rajouter une condition si c'est joueur 1 ou 2
+	        # Le programme enlève la case A1 du tableau @board_cases_array
+	        #@board_cases_array.delete(@board_cases_array[0])
+	        players_array[rest].symbol
+	      elsif answer_case_position == 'A2'
+	        @board_cases_array[1].content = players_array[rest].symbol
+	        #@board_cases_array.delete(@board_cases_array[1])
+	      elsif answer_case_position == 'A3'
+	        @board_cases_array[2].content = players_array[rest].symbol
+	        #@board_cases_array.delete(@board_cases_array[2])
+	      elsif answer_case_position == 'B1'
+	        @board_cases_array[3].content = players_array[rest].symbol
+	        #@board_cases_array.delete(@board_cases_array[3])
+	      elsif answer_case_position == 'B2'
+	        @board_cases_array[4].content = players_array[rest].symbol
+	        #@board_cases_array.delete(@board_cases_array[4])
+	      elsif answer_case_position == 'B3'
+	        @board_cases_array[5].content = players_array[rest].symbol
+	        #@board_cases_array.delete(@board_cases_array[5])
+	      elsif answer_case_position == 'C1'
+	        @board_cases_array[6].content = players_array[rest].symbol
+	        #@board_cases_array.delete(@board_cases_array[6])
+	      elsif answer_case_position == 'C2'
+	        @board_cases_array[7].content = players_array[rest].symbol
+	        #@board_cases_array.delete(@board_cases_array[7])
+	      elsif answer_case_position == 'C3'
+	        @board_cases_array[8].content = players_array[rest].symbol
+	        #@board_cases_array.delete(@board_cases_array[8])
+	      
+	      end
+
+        @number_of_rounds += 1
+      end
+    end
 
   end
 
@@ -43,24 +111,11 @@ class Board
 
     # match nul sinon
 
+    #if board_cases_array[0].content == "X" &&
+    #end
+
   end
 
-  
-  def display_board
-    print "-------------------------\n"
-    print "|#{caseA1.position}     |#{caseA2.position}      |#{casA3.postion}     |\n"
-    print "|   #{caseA1.content}   |   #{caseA2.content}   |   #{casA3.content}   |\n"
-    print "|       |       |       |\n"
-    print "-------------------------\n"  
-  end
-
-
-
-  #def test
-  #	@board_cases_array[0].content = "X"
-  #	@board_cases_array.delete(caseA1)
-  #	puts @board_cases_array
-  #end
 
 
 end

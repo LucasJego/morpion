@@ -7,9 +7,9 @@ class Game
     symbols_array = ["X", "O"]
 
     # Affichage de début de jeu
-    5.times do
-	    system('clear')
-	    sleep(0.2)
+    #5.times do
+	    #system('clear')
+	    #sleep(0.2)
 	    puts "\n\n"
 	    puts "\t" * 3 + '------------------------------------------'.red
 	    puts "\t" * 3 + '|    Bienvenue dans le jeu du morpion    |'.red
@@ -17,8 +17,8 @@ class Game
 	    puts "\t" * 3 + '|          avant l\'adversaire :)         |'.red 
 	    puts "\t" * 3 + '------------------------------------------'.red
 	    puts "\n\n"
-	    sleep(0.7)
-    end
+	    #sleep(0.7)
+    #end
 
     # Création des deux joueurs
     2.times do |i|
@@ -53,7 +53,7 @@ class Game
 	    	puts "\nChoisissez votre symbole"
 	    	sleep(2)
 	    	puts "\nAh bah non, vous, vous avez pas le choix..."
-	    	sleep (2)
+	    	#sleep (2)
 	    end
 	    
 	    # Création du joueur via la classe Player
@@ -62,17 +62,33 @@ class Game
 		end
 		
   # Affichage du début de partie
-	puts "\n\n#{@players_array[0].name} (#{@players_array[0].symbol}) va jouer contre #{@players_array[1].name} (#{@players_array[1].symbol})."
+	puts "\n\n#{@players_array[0].name} (#{@players_array[0].symbol}) va jouer contre #{@players_array[1].name} (#{@players_array[1].symbol}).\n\n"
 
 	# Initialisation du board
-	board = Board.new
-	board.play_turn
+	@board = Board.new
+	@board.play_turn(players_array)
+	@board.turn
 
 	end
 
   # Fonction qui affiche le plateau
   def turn
-
+    # Affiche la première ligne du tableau (cases A1 à A3)
+    print "-------------------------\n"
+    print "|#{@board_cases_array[0].position}     |#{@board_cases_array[1].position}     |#{@board_cases_array[2].position}     |\n"
+    print "|   #{@board_cases_array[0].content}   |   #{@board_cases_array[1].content}   |   #{@board_cases_array[2].content}   |\n"
+    print "|       |       |       |\n"
+    print "-------------------------\n"
+    # Affiche la deuxième ligne du tableau (cases B1 à B3)
+    print "|#{@board_cases_array[3].position}     |#{@board_cases_array[4].position}     |#{@board_cases_array[5].position}     |\n"
+    print "|   #{@board_cases_array[3].content}   |   #{@board_cases_array[4].content}   |   #{@board_cases_array[5].content}   |\n"
+    print "|       |       |       |\n"
+    print "-------------------------\n"
+    # Affiche la troisième ligne du tableau (cases C1 à C3)
+    print "|#{@board_cases_array[6].position}     |#{@board_cases_array[7].position}     |#{@board_cases_array[8].position}     |\n"
+    print "|   #{@board_cases_array[6].content}   |   #{@board_cases_array[7].content}   |   #{@board_cases_array[8].content}   |\n"
+    print "|       |       |       |\n"
+    print "-------------------------\n"
   end
 
   def new_round
