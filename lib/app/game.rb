@@ -67,28 +67,12 @@ class Game
 	# Initialisation du board
 	@board = Board.new
 	@board.play_turn(players_array)
-	@board.turn
 
 	end
 
   # Fonction qui affiche le plateau
   def turn
-    # Affiche la première ligne du tableau (cases A1 à A3)
-    print "-------------------------\n"
-    print "|#{@board_cases_array[0].position}     |#{@board_cases_array[1].position}     |#{@board_cases_array[2].position}     |\n"
-    print "|   #{@board_cases_array[0].content}   |   #{@board_cases_array[1].content}   |   #{@board_cases_array[2].content}   |\n"
-    print "|       |       |       |\n"
-    print "-------------------------\n"
-    # Affiche la deuxième ligne du tableau (cases B1 à B3)
-    print "|#{@board_cases_array[3].position}     |#{@board_cases_array[4].position}     |#{@board_cases_array[5].position}     |\n"
-    print "|   #{@board_cases_array[3].content}   |   #{@board_cases_array[4].content}   |   #{@board_cases_array[5].content}   |\n"
-    print "|       |       |       |\n"
-    print "-------------------------\n"
-    # Affiche la troisième ligne du tableau (cases C1 à C3)
-    print "|#{@board_cases_array[6].position}     |#{@board_cases_array[7].position}     |#{@board_cases_array[8].position}     |\n"
-    print "|   #{@board_cases_array[6].content}   |   #{@board_cases_array[7].content}   |   #{@board_cases_array[8].content}   |\n"
-    print "|       |       |       |\n"
-    print "-------------------------\n"
+   
   end
 
   def new_round
