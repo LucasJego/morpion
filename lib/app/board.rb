@@ -37,7 +37,7 @@ class Board
     answer = "oui"
     
 
-    while answer = "oui" || answer != "Oui" do
+    while answer == "oui" || answer == "Oui" do
 
     	# La variable d'instance @number_of_round va à la fois compter le nombre de tours joués et permettre de savoir quel joueur doit jouer. Si n est impair, c'est au joueur 1, sinon c'est au joueur 2
       @number_of_rounds = 0
@@ -148,7 +148,7 @@ class Board
 	  	  answer = gets.chomp
 	  	end
     end
-
+  puts "Eh bah casse toi alors !"
   end
 
   #Fonction qui vérifie le plateau et qui indique si un des joueurs a gagné ou s'il y a match nul

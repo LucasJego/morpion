@@ -8,7 +8,5 @@ require_relative 'lib/app/player.rb'
 require_relative 'lib/app/game.rb'
 
 
-#game = Board.new
-#player1 = Player.new("Lucas", "X")
 
 game = Game.new
